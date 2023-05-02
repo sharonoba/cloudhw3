@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h2>Study Space Database</h2>
+
+    <h3>Sign <a href="{{ url_for('sign') }}">here</a></h3>
+    <h3>Entries</h3>
+    
+    <table class="table">
+            <thead>
+            <tr>
+              <td>Bldg Name   </td>
+              <td>Bldg Code   </td>
+              <td>Floor       </td>
+              <td>Closest Room </td>
+              <td>Rating(1-5)   </td>
+              <td>Edit </td>
+              </tr>
+            </thead>
+            </table>              
+    {% for entry in entries %}
+        <p class=entry>
+            Bldg Name:{{ entry.name }} &lt;Bldg Code:{{ entry.code }}&gt;&lt{{ entry.floor }}&gt;
+            &lt{{ entry.room }}&gt;&lt{{ entry.rating }}&gt; 
+           <form action="{{ url_for('remove')}}" method=post> 
+           <button type="submit" value=Remove>remove</button></form>
+            
+            
+      
+        </p>
+    {% endfor %}
+
+{% endblock %}

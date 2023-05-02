@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h2>Study Space Database</h2>
+
+    <h3>New Entry <a href="{{ url_for('sign') }}">here</a></h3>
+    <h3>Entries</h3>
+    &ltBldg Name:&gt  &ltBldg Code:&gt  &ltFloor:&gt   &ltClosest Room:&gt &ltRating(1-5):&gt
+        
+    {% for entry in entries %}
+        <p class=entry>
+            {{ entry.spaceid }}&lt{{ entry.name }}&gt &lt;{{ entry.code }}&gt;&lt{{ entry.floor }}&gt;
+            &lt{{ entry.room }}&gt;&lt{{ entry.rating }}&gt; 
+          <form method="post" action="{{ url_for('index')}}">
+          <input type="number" name="spaceid" value={{entry.spaceid}}><input type=submit value=remove {{entry.spaceid}}></p></form>
+            
+            
+      
+        </p>
+    {% endfor %}
+
+{% endblock %}
